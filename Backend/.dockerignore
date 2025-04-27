@@ -1,0 +1,10 @@
+# Ignore these globally
+**/node_modules
+.git
+.env*.local
+*.log
+dist
+
+# Backend-specific ignores
+coverage
+*.md

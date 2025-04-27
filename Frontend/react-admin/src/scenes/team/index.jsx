@@ -43,7 +43,7 @@ const Team = () => {
 
     if (confirm.isConfirmed) {
       try {
-        const res = await axios.delete(`http://localhost:5000/api/teams/${id}`);
+        const res = await axios.delete(`http://backend:5000/api/teams/${id}`);
         Swal.fire("Deleted!", res.data.message, "success");
         setTeamData((prev) => prev.filter((item) => item._id !== id));
       } catch (error) {

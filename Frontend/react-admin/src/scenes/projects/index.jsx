@@ -19,7 +19,7 @@ const Projects = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/projects");
+      const res = await axios.get("http://backend:5000/api/projects");
       setProjects(res.data);
     } catch (err) {
       console.error("Failed to fetch projects:", err);

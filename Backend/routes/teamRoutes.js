@@ -17,14 +17,14 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         const newTeam = new Team(req.body);
-        await newTeam.save();
-        const savedTeam = await newTeam.save();
+        await newTeam.save(); // Only call save once
+        res.status(201).json(newTeam); // Return the created team member
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
 });
 
-// @route PUT /api/teams/:id
+// PUT (update) team member
 router.put("/:id", async (req, res) => {
     try {
         const updatedMember = await Team.findByIdAndUpdate(
@@ -47,7 +47,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const deletedTeam = await Team.findByIdAndDelete(id); // ✅ _id insteaf of id METHOD
+        const deletedTeam = await Team.findByIdAndDelete(id); // ✅ _id instead of id METHOD
 
         if (!deletedTeam) {
             return res.status(404).json({ message: "Team member not found" });
