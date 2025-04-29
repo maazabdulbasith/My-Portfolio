@@ -1,5 +1,19 @@
 {
   "dependencies": {
     "date-fns": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.25.1",
+    "eslint-config-next": "^15.3.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   }
 }
