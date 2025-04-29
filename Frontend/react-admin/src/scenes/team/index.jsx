@@ -30,22 +30,27 @@ const Team = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (ids) => {
     const confirm = await Swal.fire({
       title: "Are you sure?",
-      text: "This will permanently delete the team member.",
+      text: `This will permanently delete ${Array.isArray(ids) ? ids.length : 1} team member(s).`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, delete!",
     });
 
     if (confirm.isConfirmed) {
       try {
-       const res = await axios.delete(`https://my-portfolio-l7kf.onrender.com/team/${id}`);
-        Swal.fire("Deleted!", res.data.message, "success");
-        setTeamData((prev) => prev.filter((item) => item._id !== id));
+        const idArray = Array.isArray(ids) ? ids : [ids];
+        await Promise.all(
+          idArray.map((id) =>
+            axios.delete(`https://my-portfolio-l7kf.onrender.com/team/${id}`)
+          )
+        );
+        Swal.fire("Deleted!", "Team member(s) deleted successfully.", "success");
+        setTeamData((prev) => prev.filter((item) => !idArray.includes(item._id)));
       } catch (error) {
         Swal.fire("Error", "Something went wrong while deleting.", "error");
       }

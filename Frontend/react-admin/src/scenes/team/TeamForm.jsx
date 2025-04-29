@@ -2,7 +2,7 @@ import { Box, Typography, Modal } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
-import axios from "axios";
+import * as teamService from "../../services/teamService";
 
 const TeamForm = ({
   openForm,
@@ -59,12 +59,9 @@ const TeamForm = ({
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               if (editMember) {
-                const res = await axios.put(
-                  `http://localhost:5000/api/teams/${editMember._id}`,
-                  values
-                );
+                const res = await teamService.updateTeamMember(editMember._id, values);
                 setTeamData((prev) =>
-                  prev.map((m) => (m._id === editMember._id ? res.data : m))
+                  prev.map((m) => (m._id === editMember._id ? res : m))
                 );
                 Swal.fire("Updated!", "Member updated successfully", "success").then(() => {
                   handleClose();
@@ -76,11 +73,8 @@ const TeamForm = ({
                     ? Math.max(...teamData.map((m) => m.id || 0))
                     : 0;
                 const newMember = { ...values, id: maxId + 1 };
-                const res = await axios.post(
-                  "http://localhost:5000/api/teams",
-                  newMember
-                );
-                setTeamData((prev) => [...prev, res.data]);
+                const res = await teamService.addTeamMember(newMember);
+                setTeamData((prev) => [...prev, res]);
                 Swal.fire("Added!", "Member added successfully", "success").then(() => {
                   handleClose();
                   resetForm();
