@@ -43,7 +43,7 @@ const Team = () => {
 
     if (confirm.isConfirmed) {
       try {
-       const res = await axios.delete(`https://my-portfolio-l7kf.onrender.com/team${id}`);
+       const res = await axios.delete(`https://my-portfolio-l7kf.onrender.com/team/${id}`);
         Swal.fire("Deleted!", res.data.message, "success");
         setTeamData((prev) => prev.filter((item) => item._id !== id));
       } catch (error) {
