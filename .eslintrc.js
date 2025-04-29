@@ -1,6 +1,4 @@
-import { defineConfig } from "eslint";
-
-export default defineConfig({
+module.exports = {
     extends: [
         "eslint:recommended",
         "plugin:react/recommended",
@@ -16,8 +14,18 @@ export default defineConfig({
         },
     },
     plugins: ["react", "jsx-a11y", "import"],
-    rules: {
-        // Add your custom rules here
+    rules: {},
+    ignorePatterns: ["node_modules/", "build/"],
+
+    settings: {
+        react: {
+            version: "19.1",
+        },
     },
-    ignorePatterns: ["node_modules/", "build/"], // Replace with directories you want to ignore
-});
+
+    env: {
+        browser: true,
+        node: true,
+        es2021: true,
+    },
+};
