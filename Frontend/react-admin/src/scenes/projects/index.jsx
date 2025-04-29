@@ -2,11 +2,11 @@ import { Box, Typography, useTheme, Button, CircularProgress } from "@mui/materi
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import ProjectForm from "./ProjectForm";
+import * as ProjectService from "../../services/projectService";  // Import the new ProjectService
 
 const Projects = () => {
   const theme = useTheme();
@@ -19,8 +19,8 @@ const Projects = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://backend:5000/api/projects");
-      setProjects(res.data);
+      const data = await ProjectService.getProjects();  // Use the service to fetch projects
+      setProjects(data);
     } catch (err) {
       console.error("Failed to fetch projects:", err);
     } finally {
@@ -50,7 +50,7 @@ const Projects = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/api/projects/${id}`);
+        await ProjectService.deleteProject(id);  // Use the service to delete the project
         fetchProjects();
         Swal.fire("Deleted!", "Project has been removed.", "success");
       } catch (err) {

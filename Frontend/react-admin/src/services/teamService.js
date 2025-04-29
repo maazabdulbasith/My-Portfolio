@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://backend:5000/api/teams";
+const API_URL = "https://my-portfolio-l7kf.onrender.com/team";
 
 export const getTeams = async () => {
     try {
