@@ -3,10 +3,10 @@ name: Deploy
 on:
   push:
     branches:
-      - master  # or the branch you want to deploy from
+      - master
   pull_request:
     branches:
-      - master  # or the branch you want to deploy from
+      - master
 
 jobs:
   deploy:
@@ -21,8 +21,22 @@ jobs:
         with:
           node-version: 18
 
-      - name: 📦 Install dependencies
+      # Install frontend dependencies (if needed)
+      - name: 📦 Install frontend dependencies
         run: npm install
 
+      # Install backend dependencies
+      - name: 📦 Install backend dependencies
+        run: |
+          cd Backend
+          npm ci
+
+      # Run ESLint on backend
+      - name: 🧹 Run ESLint on backend
+        run: |
+          cd Backend
+          npx eslint .
+
+      # Deploy step should come LAST
       - name: 🚀 Deploy
-        run: npm run deploy  # Replace with your actual deploy script or steps
+        run: npm run deploy  # Make sure this script is defined in your root package.json
