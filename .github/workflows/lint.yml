@@ -15,8 +15,22 @@ jobs:
         with:
           node-version: 18
 
-      - name: 📦 Install dependencies
-        run: npm install
+      - name: 📦 Install backend dependencies
+        run: |
+          cd Backend
+          npm ci
 
-      - name: 🧹 Run ESLint
-        run: npm run lint
+      - name: 🧹 Run ESLint on backend
+        run: |
+          cd Backend
+          npx eslint . --ext .js,.jsx,.cjs
+
+      - name: 📦 Install frontend dependencies
+        run: |
+          cd Frontend
+          npm ci
+
+      - name: 🧹 Run ESLint on frontend
+        run: |
+          cd Frontend
+          npm run lint
