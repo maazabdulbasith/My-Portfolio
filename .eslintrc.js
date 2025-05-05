@@ -1,7 +1,6 @@
 module.exports = {
     extends: [
         "eslint:recommended",
-        "plugin:react/recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
@@ -13,7 +12,7 @@ module.exports = {
             jsx: true,
         },
     },
-    plugins: ["react", "jsx-a11y", "import"],
+    plugins: ["import"],
     rules: {},
     ignorePatterns: ["node_modules/", "build/"],
 
