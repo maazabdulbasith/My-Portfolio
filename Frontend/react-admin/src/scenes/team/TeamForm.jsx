@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { Box, Typography, Modal } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";

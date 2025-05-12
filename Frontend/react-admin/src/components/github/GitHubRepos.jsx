@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState, useMemo } from "react";
 import { Box, Typography, Card, CardContent, Link, useTheme } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";

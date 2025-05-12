@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { Box, Typography, useTheme, Divider, Link, useMediaQuery } from "@mui/material";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";

@@ -18,7 +18,7 @@ module.exports = {
 
     settings: {
         react: {
-            version: "19.1",
+            version: "detect",
         },
     },
 

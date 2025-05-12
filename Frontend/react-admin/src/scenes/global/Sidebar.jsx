@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { useState } from "react";
 import { Sidebar, Menu, MenuItem, ProSidebarProvider } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";

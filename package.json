@@ -1,8 +1,8 @@
 {
   "dependencies": {
     "date-fns": "^4.1.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
@@ -10,13 +10,19 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5"
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "prepare": "husky install",
+    "lint:frontend": "eslint ./frontend/react-admin --ext .js,.jsx,.ts,.tsx",
+    "lint:backend": "eslint ./backend --ext .js,.jsx",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:fix": "npm run lint:frontend -- --fix && npm run lint:backend -- --fix"
   }
 }
