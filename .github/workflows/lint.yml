@@ -23,7 +23,7 @@ jobs:
       - name: 🧹 Run ESLint on backend
         run: |
           cd Backend
-          npx eslint . --ext .js,.jsx,.cjs
+          npx eslint . --ext .js,.jsx,.cjs,.mjs
 
       - name: 📦 Install frontend dependencies
         run: |
@@ -32,5 +32,5 @@ jobs:
 
       - name: 🧹 Run ESLint on frontend
         run: |
-          cd Frontend
+          cd Frontend/react-admin
           npm run lint
