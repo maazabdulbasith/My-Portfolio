@@ -27,7 +27,7 @@ jobs:
 
       - name: 📦 Install frontend dependencies
         run: |
-          cd Frontend
+          cd Frontend/react-admin
           npm ci
 
       - name: 🧹 Run ESLint on frontend
