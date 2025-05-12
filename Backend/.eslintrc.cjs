@@ -1,4 +1,6 @@
+// Backend/.eslintrc.cjs
 module.exports = {
+    root: true, // <------- stops ESLint from searching above this dir
     env: {
         node: true,
         es2021: true,
